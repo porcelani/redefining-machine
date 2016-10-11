@@ -1,5 +1,11 @@
 sudo su -
 
+#Java
+add-apt-repository ppa:webupd8team/java -y
+apt-get update
+apt-get install oracle-java8-installer
+echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
+
 #Git
 apt-get install git
 git config --global user.email "porcelani@gmail.com"
@@ -26,8 +32,7 @@ apt-get install kolourpaint4 -y
 #PrintScreen
 apt-get install shutter -y
 
-#Foxit
-# wget http://cdn01.foxitsoftware.com/pub/foxit/reader/desktop/linux/2.x/2.1/en_us/FoxitReader2.1.0805_Server_x64_enu_Setup.run.tar.gz
-# tar xzvf FoxitReader*.tar.gz
-# chmod a+x FoxitReader*.run
-# ./FoxitReader.*.run
+#Node
+curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+apt-get install -y nodejs
+apt-get install -y build-essential
