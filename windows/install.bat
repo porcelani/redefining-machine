@@ -3,8 +3,12 @@
 
 
 choco install googlechrome -y
+choco install googledrive -y
+choco install googlephotos -y
 choco install ditto -y
 
+choco install git -y
+choco install github -y
 choco install jdk8 -y
 choco install nodejs.install -y
 choco install intellijidea-ultimate -y
