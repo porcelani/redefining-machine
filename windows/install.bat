@@ -7,6 +7,10 @@ choco install googledrive -y
 choco install googlephotos -y
 choco install ditto -y
 
+choco install 7zip.install -y
+choco install notepadplusplus.install -y
+choco install atom -y
+
 choco install git -y
 choco install github -y
 choco install jdk8 -y
