@@ -1,4 +1,4 @@
-#Install Package Manager as a Admin
+REM Install Package Manager as a Admin
 @powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
 
 
