@@ -7,7 +7,7 @@ choco install googledrive -y
 choco install googlephotos -y
 choco install spotify -y
 choco install ditto -y
-
+choco install foxitreader -y
 choco install 7zip.install -y
 choco install notepadplusplus.install -y
 choco install atom -y
