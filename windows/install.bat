@@ -17,3 +17,6 @@ choco install jdk8 -y
 choco install nodejs.install -y
 choco install intellijidea-ultimate -y
 choco install putty.install -y
+choco install docker -y
+choco install maven -y
+choco install libreoffice -y
