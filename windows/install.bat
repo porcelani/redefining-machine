@@ -1,3 +1,4 @@
+
 REM Install Package Manager as a Admin
 @powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
 
@@ -12,6 +13,8 @@ choco install 7zip.install -y
 choco install notepadplusplus.install -y
 choco install atom -y
 choco install git -y
+git config --global user.email "porcelani@gmail.com"
+git config --global user.name "porcelani"
 choco install github -y
 choco install jdk8 -y
 choco install nodejs.install -y
