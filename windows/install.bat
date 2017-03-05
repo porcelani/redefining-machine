@@ -6,7 +6,6 @@ REM Install Package Manager as a Admin
 choco install googlechrome -y
 choco install googledrive -y
 choco install googlephotos -y
-choco install spotify -y
 choco install ditto -y
 choco install foxitreader -y
 choco install 7zip.install -y
@@ -15,11 +14,12 @@ choco install atom -y
 choco install git -y
 git config --global user.email "porcelani@gmail.com"
 git config --global user.name "porcelani"
-choco install github -y
+choco install wget -y
 choco install jdk8 -y
 choco install nodejs.install -y
 choco install intellijidea-ultimate -y
 choco install putty.install -y
+choco install mtputty -y
 choco install docker -y
 choco install maven -y
 choco install libreoffice -y
