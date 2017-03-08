@@ -14,8 +14,11 @@ choco install git -y
 git config --global user.email "porcelani@gmail.com"
 git config --global user.name "porcelani"
 choco install wget -y
+choco install vim -y
 choco install jdk8 -y
 choco install nodejs.install -y
+npm install -g lite-server
+npm install -g webpack
 choco install intellijidea-ultimate -y
 choco install putty.install -y
 choco install mtputty -y --allow-empty-checksums
