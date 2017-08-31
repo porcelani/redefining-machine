@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
 sudo su -
 
+#https://askubuntu.com/questions/79280/how-to-install-chrome-browser-properly-via-command-line
+#Chrome
+sudo apt-get install libxss1 libappindicator1 libindicator7 -y
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo dpkg -i google-chrome*.deb
+sudo apt-get install -f
+
 #suporte 32bits
 sudo dpkg --add-architecture i386
 sudo apt-get update
