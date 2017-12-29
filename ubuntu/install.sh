@@ -16,7 +16,13 @@ sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode s
 sudo apt-get update -y
 sudo apt-get install code -y
 
-#Git
+# Intellij
+# http://ubuntuhandbook.org/index.php/2017/07/intellij-idea-2017-2-released-how-to-install-in-ubuntu/
+sudo add-apt-repository ppa:ubuntuhandbook1/apps
+sudo apt-get update
+sudo apt-get install intellij-idea-community
+
+# Git
 apt-get install git
 git config --global user.email "porcelani@gmail.com"
 git config --global user.name "Porcelani"
