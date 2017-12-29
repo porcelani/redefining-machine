@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-sudo su -
 
 #https://askubuntu.com/questions/79280/how-to-install-chrome-browser-properly-via-command-line
 #Chrome
@@ -7,6 +6,56 @@ sudo apt-get install libxss1 libappindicator1 libindicator7 -y
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome*.deb
 sudo apt-get install -f
+
+#Visual Code
+#https://code.visualstudio.com/docs/setup/linux
+#https://code.visualstudio.com/docs/getstarted/settings
+curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
+sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+sudo apt-get update -y
+sudo apt-get install code -y
+
+#Git
+apt-get install git
+git config --global user.email "porcelani@gmail.com"
+git config --global user.name "Porcelani"
+git config --global http.sslverify false
+
+#CopyQ
+#Preferences > Shoutcuts > Show/Hide main Window > Global Shoutcut 
+sudo add-apt-repository ppa:noobslab/indicators -y
+sudo apt-get update
+sudo apt-get install copyq -y
+
+#PrintScreen - Shutter
+# http://askubuntu.com/questions/456985/how-to-change-the-keyboard-shortcut-to-take-screenshots-with-shutter
+sudo apt-get install shutter -y
+
+#Node
+#https://github.com/creationix/nvm
+wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+nvm install --lts
+
+#Docker
+#https://gist.github.com/wdullaer/f1af16bd7e970389bad3
+wget -qO- https://get.docker.com/ | sh
+
+#Docker-compose
+COMPOSE_VERSION=`git ls-remote https://github.com/docker/compose | grep refs/tags | grep -oP "[0-9]+\.[0-9][0-9]+\.[0-9]+$" | tail -n 1`
+sudo sh -c "curl -L https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose"
+sudo chmod +x /usr/local/bin/docker-compose
+sudo sh -c "curl -L https://raw.githubusercontent.com/docker/compose/${COMPOSE_VERSION}/contrib/completion/bash/docker-compose > /etc/bash_completion.d/docker-compose"
+sudo gpasswd -a ${USER} docker
+sudo service docker restart
+
+#Guake(Terminal)
+sudo apt-get install guake -y
+
+
+
 
 #suporte 32bits
 sudo dpkg --add-architecture i386
@@ -19,56 +68,19 @@ apt-get update
 apt-get install oracle-java8-installer
 echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
 
-
 #Maven
-apt-get install maven -y
-
-#Git
-apt-get install git
-git config --global user.email "porcelani@gmail.com"
-git config --global user.name "Porcelani"
-git config --global http.sslverify false
+sudo apt-get install maven -y
 
 #Sexy-bash
 (cd /tmp && git clone --depth 1 --config core.autocrlf=false https://github.com/twolfson/sexy-bash-prompt && cd sexy-bash-prompt && make install) && source ~/.bashrc
 
 #SVN
-apt install subversion
-
-#Guake(Terminal)
-apt-get install guake -y
+sudo apt install subversion -y
 
 #Atom
 add-apt-repository ppa:webupd8team/atom -y
 apt-get update
 apt-get install atom -y
-
-#CopyQ
-add-apt-repository ppa:noobslab/indicators -y
-apt-get update
-apt-get install copyq -y
-
-#PrintScreen - Shutter
-# http://askubuntu.com/questions/456985/how-to-change-the-keyboard-shortcut-to-take-screenshots-with-shutter
-apt-get install shutter -y
-
-#Node
-curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
-apt-get install -y nodejs
-apt-get install -y build-essential
-
-#Docker
-#https://gist.github.com/wdullaer/f1af16bd7e970389bad3
-wget -qO- https://get.docker.com/ | sh
-
-#Docker-compose
-COMPOSE_VERSION=`git ls-remote https://github.com/docker/compose | grep refs/tags | grep -oP "[0-9]+\.[0-9][0-9]+\.[0-9]+$" | tail -n 1`
-sudo sh -c "curl -L https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose"
-sudo chmod +x /usr/local/bin/docker-compose
-sudo sh -c "curl -L https://raw.githubusercontent.com/docker/compose/${COMPOSE_VERSION}/contrib/completion/bash/docker-compose > /etc/bash_completion.d/docker-compose"
-
-sudo gpasswd -a ${USER} docker
-sudo service docker restart
 
 #Kitematic
 docker run --net host --name kitematic \
