@@ -66,7 +66,7 @@ sudo apt-get install guake -y
 #suporte 32bits
 sudo dpkg --add-architecture i386
 sudo apt-get update
-sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
+sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386 libxrender1:i386 libxtst6:i386 libxi6:i386
 
 #Java
 add-apt-repository ppa:webupd8team/java -y
