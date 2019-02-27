@@ -28,15 +28,28 @@ git config --global user.email "porcelani@gmail.com"
 git config --global user.name "Porcelani"
 git config --global http.sslverify false
 
-#CopyQ
-#Preferences > Shoutcuts > Show/Hide main Window > Global Shoutcut 
-sudo add-apt-repository ppa:noobslab/indicators -y
-sudo apt-get update
-sudo apt-get install copyq -y
+#SVN
+sudo apt install subversion -y
 
-#PrintScreen - Shutter
-# http://askubuntu.com/questions/456985/how-to-change-the-keyboard-shortcut-to-take-screenshots-with-shutter
-sudo apt-get install shutter -y
+#Docker
+#https://gist.github.com/wdullaer/f1af16bd7e970389bad3
+wget -qO- https://get.docker.com/ | sh
+##Docker-compose
+COMPOSE_VERSION=`git ls-remote https://github.com/docker/compose | grep refs/tags | grep -oP "[0-9]+\.[0-9][0-9]+\.[0-9]+$" | tail -n 1`
+sudo sh -c "curl -L https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose"
+sudo chmod +x /usr/local/bin/docker-compose
+sudo sh -c "curl -L https://raw.githubusercontent.com/docker/compose/${COMPOSE_VERSION}/contrib/completion/bash/docker-compose > /etc/bash_completion.d/docker-compose"
+sudo gpasswd -a ${USER} docker
+sudo service docker restart
+
+#Java
+add-apt-repository ppa:webupd8team/java -y
+apt-get update
+apt-get install oracle-java8-installer
+echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
+
+##Maven
+sudo apt-get install maven -y
 
 #Node
 #https://github.com/creationix/nvm
@@ -45,48 +58,35 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
 nvm install --lts
 
-#Docker
-#https://gist.github.com/wdullaer/f1af16bd7e970389bad3
-wget -qO- https://get.docker.com/ | sh
 
-#Docker-compose
-COMPOSE_VERSION=`git ls-remote https://github.com/docker/compose | grep refs/tags | grep -oP "[0-9]+\.[0-9][0-9]+\.[0-9]+$" | tail -n 1`
-sudo sh -c "curl -L https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose"
-sudo chmod +x /usr/local/bin/docker-compose
-sudo sh -c "curl -L https://raw.githubusercontent.com/docker/compose/${COMPOSE_VERSION}/contrib/completion/bash/docker-compose > /etc/bash_completion.d/docker-compose"
-sudo gpasswd -a ${USER} docker
-sudo service docker restart
+#CopyQ
+#Config: Preferences > Shoutcuts > Show/Hide main Window > Global Shoutcut 
+sudo add-apt-repository ppa:noobslab/indicators -y
+sudo apt-get update
+sudo apt-get install copyq -y
+
+#PrintScreen - Shutter
+# http://askubuntu.com/questions/456985/how-to-change-the-keyboard-shortcut-to-take-screenshots-with-shutter
+sudo apt-get install shutter -y
 
 #Guake(Terminal)
+#Config: https://askubuntu.com/questions/136559/guake-doesnt-start-when-session-starts
 sudo apt-get install guake -y
 
+#DBeaver
+# https://dbeaver.io/download/
+sudo add-apt-repository ppa:serge-rider/dbeaver-ce
+sudo apt-get update
+sudo apt-get install dbeaver-ce
 
 
+#Sexy-bash
+(cd /tmp && git clone --depth 1 --config core.autocrlf=false https://github.com/twolfson/sexy-bash-prompt && cd sexy-bash-prompt && make install) && source ~/.bashrc
 
 #suporte 32bits
 sudo dpkg --add-architecture i386
 sudo apt-get update
 sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386 libxrender1:i386 libxtst6:i386 libxi6:i386
-
-#Java
-add-apt-repository ppa:webupd8team/java -y
-apt-get update
-apt-get install oracle-java8-installer
-echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
-
-#Maven
-sudo apt-get install maven -y
-
-#Sexy-bash
-(cd /tmp && git clone --depth 1 --config core.autocrlf=false https://github.com/twolfson/sexy-bash-prompt && cd sexy-bash-prompt && make install) && source ~/.bashrc
-
-#SVN
-sudo apt install subversion -y
-
-#Atom
-add-apt-repository ppa:webupd8team/atom -y
-apt-get update
-apt-get install atom -y
 
 #Kitematic
 docker run --net host --name kitematic \
@@ -96,10 +96,3 @@ docker run --net host --name kitematic \
 -v /tmp/.X11-unix:/tmp/.X11-unix \
 -v /var/run/docker.sock:/var/run/docker.sock \
 --privileged=true -t jonadev95/kitematic-docker
-
-#RPM
-sudo apt-get install rpm -y
-sudo apt-get install meld -y
-
-#downloads
-curl http://cdn01.downloads.smartbear.com/soapui/5.3.0/SoapUI-x64-5.3.0.sh -o /opt/SoapUI.sh
