@@ -42,14 +42,10 @@ sudo sh -c "curl -L https://raw.githubusercontent.com/docker/compose/${COMPOSE_V
 sudo gpasswd -a ${USER} docker
 sudo service docker restart
 
-#Java
-add-apt-repository ppa:webupd8team/java -y
-apt-get update
-apt-get install oracle-java8-installer
-echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
-
-##Maven
-sudo apt-get install maven -y
+#Java Ecosystem
+#https://sdkman.io/install
+curl -s "https://get.sdkman.io" | bash
+source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 #Node
 #https://github.com/creationix/nvm
