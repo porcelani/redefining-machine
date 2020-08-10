@@ -37,6 +37,44 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-sy
 echo "source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
 source ~/.zshrc
 
+echo 'installing vim plugins'
+#https://medium.com/@huntie/10-essential-vim-plugins-for-2018-39957190b7a9
+#https://github.com/junegunn/vim-plug
+#vim ~/.vimrc
+#:PlugInstall
+cat <<EOT >> ~/.vimrc
+call plug#begin('~/.vim/plugged')
+
+set number
+
+Plug 'airblade/vim-gitgutter'
+set updatetime=250
+highlight GitGutterAdd guifg=#009900 ctermfg=Green
+highlight GitGutterChange guifg=#bbbb00 ctermfg=Yellow
+highlight GitGutterDelete guifg=#ff2222 ctermfg=Red
+nmap ) <Plug>(GitGutterNextHunk)
+nmap ( <Plug>(GitGutterPrevHunk)
+let g:gitgutter_enabled = 1
+let g:gitgutter_map_keys = 0
+
+Plug 'doums/darcula'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'itchyny/lightline.vim'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'mattn/emmet-vim'
+Plug 'scrooloose/nerdtree'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-surround'
+Plug 'w0rp/ale'
+
+call plug#end()
+
+set termguicolors
+colorscheme darcula
+EOT
+
 echo 'installing asdf'
 #https://asdf-vm.com/#/core-manage-asdf-vm
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.7.8
